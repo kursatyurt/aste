@@ -15,6 +15,9 @@ stages:
         cache: false
         x: mesh A
         y: peakMemB
+    - examples/mapping_tester/nn.csv:
+        cache: false
+        x: mesh A
     - examples/mapping_tester/np.csv:
         cache: false
         x: mesh A
