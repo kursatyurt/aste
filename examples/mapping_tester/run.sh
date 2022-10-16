@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e -x
 
+# Get meshes
+test -f meshes.tar.gz  || wget https://gitlab.lrz.de/precice/precice2-ref-paper-setup/-/raw/main/meshes/meshes.tar.gz
+tar -xvf meshes.tar.gz
+
 # Get the test location
 TEST_LOCATION="$(pwd)"
 export TEST_LOCATION
