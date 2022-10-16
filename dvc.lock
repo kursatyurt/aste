@@ -1,0 +1,48 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: cd examples/mapping_tester  && ./clean.sh &&./run.sh
+    params:
+      examples/mapping_tester/setup-test.json:
+        general:
+          function: 0.78 + cos(10*(x+y+z))
+          ranks:
+            A:
+            - 2
+            B:
+            - 2
+          syncmode: true
+          meshes:
+            A:
+              '0.03': ${TEST_LOCATION}/0.03.vtk
+              '0.02': ${TEST_LOCATION}/0.02.vtk
+              '0.01': ${TEST_LOCATION}/0.01.vtk
+              '0.008': ${TEST_LOCATION}/0.008.vtk
+              '0.006': ${TEST_LOCATION}/0.006.vtk
+              '0.004': ${TEST_LOCATION}/0.004.vtk
+            B:
+              '0.009': ${TEST_LOCATION}/0.009.vtk
+        groups:
+        - mapping:
+            constraints:
+            - consistent
+            cases:
+              np:
+                kind: nearest-projection
+              nn:
+                kind: nearest-neighbor
+          meshes:
+            A:
+            - '0.03'
+            - '0.02'
+            - '0.01'
+            - '0.008'
+            - '0.006'
+            - '0.004'
+            B:
+            - '0.009'
+    outs:
+    - path: examples/mapping_tester/case
+      md5: c0e31612dd33863945f324fe21b3dbcf.dir
+      size: 58672663
+      nfiles: 250

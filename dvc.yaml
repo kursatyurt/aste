@@ -1,0 +1,7 @@
+stages:
+  train:
+    cmd: cd examples/mapping_tester  && ./clean.sh &&./run.sh
+    outs:
+      - examples/mapping_tester/case
+    params:
+      - examples/mapping_tester/setup-test.json:

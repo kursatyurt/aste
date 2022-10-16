@@ -9,13 +9,18 @@
         2
       ]
     },
-    "syncmode": false,
+    "syncmode": true,
     "meshes": {
       "A": {
-        "coarse_mesh": "${TEST_LOCATION}/coarse_mesh.vtk"
+        "0.03": "${TEST_LOCATION}/0.03.vtk",
+        "0.02": "${TEST_LOCATION}/0.02.vtk",
+        "0.01": "${TEST_LOCATION}/0.01.vtk",
+        "0.008": "${TEST_LOCATION}/0.008.vtk",
+        "0.006": "${TEST_LOCATION}/0.006.vtk",
+        "0.004": "${TEST_LOCATION}/0.004.vtk"
       },
       "B": {
-        "fine_mesh": "${TEST_LOCATION}/fine_mesh.vtk"
+        "0.009": "${TEST_LOCATION}/0.009.vtk"
       }
     }
   },
@@ -26,21 +31,25 @@
           "consistent"
         ],
         "cases": {
-          "tps": {
-            "kind": "rbf-thin-plate-splines",
-            "options": "use-qr-decomposition=\"1\""
-          },
-         "np": {
+          "np": {
             "kind": "nearest-projection"
+          },
+          "nn": {
+            "kind": "nearest-neighbor"
           }
         }
       },
       "meshes": {
         "A": [
-          "coarse_mesh"
+          "0.03",
+          "0.02",
+          "0.01",
+          "0.008",
+          "0.006",
+          "0.004"
         ],
         "B": [
-          "fine_mesh"
+          "0.009"
         ]
       }
     }
