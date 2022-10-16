@@ -1,0 +1,41 @@
+name: DVC CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CXX_FLAGS: "-Werror -Wall -Wextra -Wno-unused-parameter"
+      CTEST_OUTPUT_ON_FAILURE: "Yes"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: install preCICE
+        run: |
+          wget https://github.com/precice/precice/releases/download/v2.5.0/libprecice2_2.5.0_focal.deb && \
+          sudo apt-get -y update && \
+          sudo apt-get -y install ./libprecice2_2.5.0_focal.deb
+      - name: install VTK
+        run: |
+          sudo apt-get -y install libvtk7-dev
+      - name: install example dependencies
+        run: |
+          python3 -m pip install sympy scipy jinja2 dvc
+      - name: prepare directories
+        run: |
+          mkdir build_gcc build_clang
+      - name: build aste gcc
+        working-directory: build_gcc
+        env:
+          CC: gcc
+          CXX: g++
+        run: |
+          cmake ..
+          cmake --build .
+          sudo cmake --install .
+      - name: dvc run
+        run: |
+          dvc exp run
