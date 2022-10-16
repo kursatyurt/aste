@@ -1,7 +1,21 @@
 stages:
-  train:
-    cmd: cd examples/mapping_tester  && ./clean.sh &&./run.sh
+  run_testes:
+    cmd: cd examples/mapping_tester  && ./clean.sh && ./run.sh
     outs:
       - examples/mapping_tester/case
+      - examples/mapping_tester/test-statistics.csv
     params:
       - examples/mapping_tester/setup-test.json:
+  post_process:
+    deps:
+      - examples/mapping_tester/test-statistics.csv
+    cmd: cd examples/mapping_tester && python3 create_seperate_csv.py -f test-statistics.csv
+    plots:
+    - examples/mapping_tester/nn.csv:
+        cache: false
+        x: mesh A
+        y: peakMemB
+    - examples/mapping_tester/np.csv:
+        cache: false
+        x: mesh A
+        y: peakMemB

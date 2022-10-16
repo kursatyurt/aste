@@ -43,6 +43,71 @@ stages:
             - '0.009'
     outs:
     - path: examples/mapping_tester/case
-      md5: c0e31612dd33863945f324fe21b3dbcf.dir
-      size: 58672663
+      md5: 637f34a8721cfe1480b4e458801de929.dir
+      size: 58577413
       nfiles: 250
+    - path: examples/mapping_tester/test-statistics.csv
+      md5: 9e45756355ec5c3b9654c5c87835021b
+      size: 3294
+  run_testes:
+    cmd: cd examples/mapping_tester  && ./clean.sh && ./run.sh
+    params:
+      examples/mapping_tester/setup-test.json:
+        general:
+          function: 0.78 + cos(10*(x+y+z))
+          ranks:
+            A:
+            - 2
+            B:
+            - 2
+          syncmode: true
+          meshes:
+            A:
+              '0.03': ${TEST_LOCATION}/0.03.vtk
+              '0.02': ${TEST_LOCATION}/0.02.vtk
+              '0.01': ${TEST_LOCATION}/0.01.vtk
+              '0.008': ${TEST_LOCATION}/0.008.vtk
+              '0.006': ${TEST_LOCATION}/0.006.vtk
+              '0.004': ${TEST_LOCATION}/0.004.vtk
+            B:
+              '0.009': ${TEST_LOCATION}/0.009.vtk
+        groups:
+        - mapping:
+            constraints:
+            - consistent
+            cases:
+              np:
+                kind: nearest-projection
+              nn:
+                kind: nearest-neighbor
+          meshes:
+            A:
+            - '0.03'
+            - '0.02'
+            - '0.01'
+            - '0.008'
+            - '0.006'
+            - '0.004'
+            B:
+            - '0.009'
+    outs:
+    - path: examples/mapping_tester/case
+      md5: 118439cf32e2354ca35e573267df9d62.dir
+      size: 57748310
+      nfiles: 250
+    - path: examples/mapping_tester/test-statistics.csv
+      md5: 3650f0566f264d180cbebe76a500d102
+      size: 3305
+  post_process:
+    cmd: cd examples/mapping_tester && python3 create_seperate_csv.py -f test-statistics.csv
+    deps:
+    - path: examples/mapping_tester/test-statistics.csv
+      md5: 3650f0566f264d180cbebe76a500d102
+      size: 3305
+    outs:
+    - path: examples/mapping_tester/nn.csv
+      md5: 89d38fce0ab6da9b3056c65dc6dd7c47
+      size: 1698
+    - path: examples/mapping_tester/np.csv
+      md5: c5e45d1c64552e2b7fea0f1a61b58dfd
+      size: 1711
