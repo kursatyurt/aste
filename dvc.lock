@@ -92,22 +92,22 @@ stages:
             - '0.009'
     outs:
     - path: examples/mapping_tester/case
-      md5: 813a89b2fc317b5a63b2ee91b33d301b.dir
-      size: 41623127
-      nfiles: 238
+      md5: cb473b8bd75ef6405fe66d462b47fadb.dir
+      size: 57701580
+      nfiles: 250
     - path: examples/mapping_tester/test-statistics.csv
-      md5: 0d82a03c031095a5714e109cf41d9ce9
-      size: 3021
+      md5: cde8952a1c074e92cb3c5c1988340d81
+      size: 3301
   post_process:
     cmd: cd examples/mapping_tester && python3 create_seperate_csv.py -f test-statistics.csv
     deps:
     - path: examples/mapping_tester/test-statistics.csv
-      md5: 0d82a03c031095a5714e109cf41d9ce9
-      size: 3021
+      md5: cde8952a1c074e92cb3c5c1988340d81
+      size: 3301
     outs:
     - path: examples/mapping_tester/nn.csv
-      md5: 3c8e30fa59f0340775a6acc165f48173
-      size: 1695
+      md5: d16a2525cab0c7548b3b42220da1acbf
+      size: 1700
     - path: examples/mapping_tester/np.csv
-      md5: b7a9648981d21d3b3e80dab0865866a2
-      size: 1449
+      md5: 7ca1992201f27d14d662b6caedcde89f
+      size: 1701
