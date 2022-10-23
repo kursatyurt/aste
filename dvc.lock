@@ -99,15 +99,22 @@ stages:
       md5: cde8952a1c074e92cb3c5c1988340d81
       size: 3301
   post_process:
-    cmd: cd examples/mapping_tester && python3 create_seperate_csv.py -f test-statistics.csv
+    cmd: cd examples/mapping_tester && python3 ../../tools/mapping-tester/plotconv.py
+      -f test-statistics.csv
     deps:
     - path: examples/mapping_tester/test-statistics.csv
       md5: cde8952a1c074e92cb3c5c1988340d81
       size: 3301
     outs:
-    - path: examples/mapping_tester/nn.csv
-      md5: d16a2525cab0c7548b3b42220da1acbf
-      size: 1700
-    - path: examples/mapping_tester/np.csv
-      md5: 7ca1992201f27d14d662b6caedcde89f
-      size: 1701
+    - path: examples/mapping_tester/result-computet.png
+      md5: 2cfe5410766907a48a840373091918b6
+      size: 33894
+    - path: examples/mapping_tester/result-error.png
+      md5: 4881bbcffcb85e2baa0f02aada399e36
+      size: 61735
+    - path: examples/mapping_tester/result-mapt.png
+      md5: 49716282224358cc8b4ade961b59a6ef
+      size: 30562
+    - path: examples/mapping_tester/result-peakMemB.png
+      md5: 517b24db7a836959ae8acef6b9506813
+      size: 46497

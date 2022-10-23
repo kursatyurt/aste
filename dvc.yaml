@@ -9,16 +9,9 @@ stages:
   post_process:
     deps:
       - examples/mapping_tester/test-statistics.csv
-    cmd: cd examples/mapping_tester && python3 create_seperate_csv.py -f test-statistics.csv
+    cmd: cd examples/mapping_tester && python3 ../../tools/mapping-tester/plotconv.py -f test-statistics.csv
     plots:
-    - examples/mapping_tester/nn.csv:
-        cache: false
-        x: mesh A
-        y: peakMemB
-    - examples/mapping_tester/nn.csv:
-        cache: false
-        x: mesh A
-    - examples/mapping_tester/np.csv:
-        cache: false
-        x: mesh A
-        y: peakMemB
+      - examples/mapping_tester/result-computet.png
+      - examples/mapping_tester/result-error.png
+      - examples/mapping_tester/result-peakMemB.png
+      - examples/mapping_tester/result-mapt.png

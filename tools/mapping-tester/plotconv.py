@@ -107,6 +107,7 @@ def plotError(df, prefix):
     plt.gca().invert_xaxis()
     plt.grid()
     plt.savefig(prefix + "-error.pdf")
+    plt.savefig(prefix + "-error.png")
 
 
 def plotMemory(df, prefix):
@@ -136,6 +137,7 @@ def plotMemory(df, prefix):
     plt.gca().invert_xaxis()
     plt.grid()
     plt.savefig(prefix + "-peakMemB.pdf")
+    plt.savefig(prefix + "-peakMemB.png")
 
 
 def plotComputeMappingTime(df, prefix):
@@ -166,6 +168,7 @@ def plotComputeMappingTime(df, prefix):
     plt.gca().invert_xaxis()
     plt.grid()
     plt.savefig(prefix + "-computet.pdf")
+    plt.savefig(prefix + "-computet.png")
 
 
 def plotMapDataTime(df, prefix):
@@ -196,6 +199,7 @@ def plotMapDataTime(df, prefix):
     plt.gca().invert_xaxis()
     plt.grid()
     plt.savefig(prefix + "-mapt.pdf")
+    plt.savefig(prefix + "-mapt.png")
 
 
 def main(argv):

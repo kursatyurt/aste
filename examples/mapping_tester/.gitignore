@@ -1,3 +1,7 @@
 case/
 test-statistics.csv
 /case
+/result-computet.png
+/result-error.png
+/result-peakMemB.png
+/result-mapt.png
