@@ -92,29 +92,29 @@ stages:
             - '0.009'
     outs:
     - path: examples/mapping_tester/case
-      md5: cb473b8bd75ef6405fe66d462b47fadb.dir
-      size: 57701580
+      md5: 4c2fba7b079d4ddc259b1f5101261557.dir
+      size: 57750575
       nfiles: 250
     - path: examples/mapping_tester/test-statistics.csv
-      md5: cde8952a1c074e92cb3c5c1988340d81
-      size: 3301
+      md5: 476933c15a23ce8468aa26c6cf131ad8
+      size: 3291
   post_process:
     cmd: cd examples/mapping_tester && python3 ../../tools/mapping-tester/plotconv.py
       -f test-statistics.csv
     deps:
     - path: examples/mapping_tester/test-statistics.csv
-      md5: cde8952a1c074e92cb3c5c1988340d81
-      size: 3301
+      md5: 476933c15a23ce8468aa26c6cf131ad8
+      size: 3291
     outs:
     - path: examples/mapping_tester/result-computet.png
-      md5: 2cfe5410766907a48a840373091918b6
-      size: 33894
+      md5: 281dc0619a3356f128e1d92ee0b5d8d6
+      size: 39342
     - path: examples/mapping_tester/result-error.png
-      md5: 4881bbcffcb85e2baa0f02aada399e36
-      size: 61735
+      md5: c193bce26fe9c1c19796600238b08962
+      size: 61650
     - path: examples/mapping_tester/result-mapt.png
-      md5: 49716282224358cc8b4ade961b59a6ef
-      size: 30562
+      md5: 45435acb8916d54d47c89b9b1daacff3
+      size: 25103
     - path: examples/mapping_tester/result-peakMemB.png
-      md5: 517b24db7a836959ae8acef6b9506813
-      size: 46497
+      md5: 2de6e47a215ad450f0487de1d82f90ca
+      size: 44314
